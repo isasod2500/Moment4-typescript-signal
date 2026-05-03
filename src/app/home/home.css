@@ -1,0 +1,24 @@
+h2 {
+    text-align: center;
+}
+
+#indexMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#courseList {
+    display: flex;
+    flex-direction: column;
+    width: 75%;
+}
+
+#course {
+    margin: 1rem;
+    padding: 1rem;
+    border: 2px solid grey;
+    border-style: outset;
+    border-radius: 7px;
+}

@@ -1,0 +1,26 @@
+<h2>Kurslista över Webbutvecklingsprogrammet hos MIUN</h2>
+<main id="indexMain">
+  @if(error()) {
+  <div class="error">
+    <p>
+      {{ error() }}
+    </p>
+  </div>
+  }
+  <article id="courseList">
+    @for(course of courses(); track course.code) {
+    <section id="course">
+      <h3>
+        {{ course.code.toUpperCase() }} -
+        {{ course.coursename }}
+      </h3>
+      <p> Progression:
+        {{ course.progression }}
+      </p>
+      <p> Kursplan:
+       <a [href]="course.syllabus"> {{ course.syllabus  }} </a> 
+      </p>
+    </section>
+    }
+  </article>
+</main>

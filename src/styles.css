@@ -1,1 +1,9 @@
-/* You can add global styles to this file, and also import other style files */
+body, html {
+    background-color: bisque;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 1.1em;
+}
