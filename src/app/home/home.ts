@@ -12,7 +12,8 @@ import { CommonModule } from '@angular/common';
 export class Home {
   courses = signal<Course[]>([]);
   error = signal<string | null>(null);
-  sorted = false;
+  sorted: boolean = false;
+  value: string = ""
 
   courseService = inject(courseService);
 
@@ -21,6 +22,7 @@ export class Home {
     this.loadCourses();
   }
 
+  //laddar in kurser.
   async loadCourses() {
     try {
       const response = await this.courseService.fetchCourses();
@@ -30,7 +32,7 @@ export class Home {
       this.error.set("Kunde inte ladda data - försök igen senare");
     }
   }
-
+  //Funktion för att få fram idt tillhörande vad som klickas. 
   findID(id: Event) {
     const element = id.target as HTMLElement
     this.filterCourses(element.id)
@@ -80,5 +82,22 @@ export class Home {
       console.log(err)
     }
 
+  }
+
+  //Tar input från sökfält, gör om till lowercase för att korrekt filtrera och tar endast med matchande sökfraser.
+  async filterValue(value: string) {
+    try {
+      const response = await this.courseService.fetchCourses();
+      this.value = value.toLowerCase();
+
+      const result = response.filter(course =>
+        course.coursename.toLowerCase().includes(this.value) ||
+        course.code.toLowerCase().includes(this.value)
+      );
+
+      this.courses.set(result)
+    } catch (err) {
+      console.log(err)
+    }
   }
 }
