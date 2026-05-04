@@ -12,13 +12,47 @@ h2 {
 #courseList {
     display: flex;
     flex-direction: column;
-    width: 75%;
-}
 
-#course {
-    margin: 1rem;
-    padding: 1rem;
+    width: 75%;
     border: 2px solid grey;
     border-style: outset;
     border-radius: 7px;
+}
+
+#searchBar {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin: 0.5rem 0 -0.5rem 1rem;
+    }
+
+    input[type=text] {
+        margin: 0.5rem 0 0 1rem;
+        padding: 0.2rem;
+        width: 25%;
+        box-sizing: border-box;
+    }
+}
+
+
+#courseHeaders {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr 1fr;
+    align-items: center;
+    padding: 1rem;
+    margin: 0 1rem 0 1rem;
+    border-bottom: 2px solid grey;
+    text-decoration: underline;
+}
+
+#course {
+    display: grid;
+    grid-template-columns: 2fr 3fr 2fr 1fr;
+    margin: 1rem;
+    padding: 1rem;
+    
+    p {
+        padding: 0 1rem 0 0;
+    }
 }

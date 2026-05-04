@@ -1,4 +1,4 @@
-<h2>Kurslista över Webbutvecklingsprogrammet hos MIUN</h2>
+<h2>Kurslista över program för Webbutveckling hos MIUN</h2>
 <main id="indexMain">
   @if(error()) {
   <div class="error">
@@ -8,17 +8,31 @@
   </div>
   }
   <article id="courseList">
+    <div id="searchBar">
+      <label for="search">Sök kurs</label>
+      <input type="text" id="search" name="search">
+    </div>
+
+    <div id="courseHeaders" (click)="findID($event)">
+      <p id="code">Kurskod</p>
+      <p id="name">Kursnamn</p>
+      <p id="progression">Progression</p>
+      <p>Kursplan</p>
+    </div>
     @for(course of courses(); track course.code) {
     <section id="course">
-      <h3>
-        {{ course.code.toUpperCase() }} -
+      <p>
+        {{ course.code.toUpperCase() }}
+      </p>
+      <p>
         {{ course.coursename }}
-      </h3>
-      <p> Progression:
+      </p>
+      <p>
         {{ course.progression }}
       </p>
-      <p> Kursplan:
-       <a [href]="course.syllabus"> {{ course.syllabus  }} </a> 
+      <p> 
+        <a [href]="course.syllabus">
+          {{ course.code.toUpperCase() }} </a>
       </p>
     </section>
     }
