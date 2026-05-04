@@ -20,54 +20,55 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               {
-                "glob": "**/*",
-                "input": "public"
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              }
+          ],
+          "styles": [
+            "src/styles.css"
+          ]
+        },
+        "configurations": {
+          "production": {
+            "budgets": [
+              {
+                "type": "initial",
+                "maximumWarning": "500kB",
+                "maximumError": "1MB"
+              },
+              {
+                "type": "anyComponentStyle",
+                "maximumWarning": "4kB",
+                "maximumError": "8kB"
               }
             ],
-            "styles": [
-              "src/styles.css"
-            ]
+            "outputHashing": "all"
           },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
-          },
-          "defaultConfiguration": "production"
+          "development": {
+            "optimization": false,
+            "extractLicenses": false,
+            "sourceMap": true
+          }
         },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "signal:build:production"
-            },
-            "development": {
-              "buildTarget": "signal:build:development"
-            }
+        "defaultConfiguration": "production"
+      },
+      "serve": {
+        "builder": "@angular/build:dev-server",
+        "configurations": {
+          "production": {
+            "buildTarget": "signal:build:production"
           },
-          "defaultConfiguration": "development"
+          "development": {
+            "buildTarget": "signal:build:development"
+          }
         },
-        "test": {
-          "builder": "@angular/build:unit-test"
-        }
+        "defaultConfiguration": "development"
+      },
+      "test": {
+        "builder": "@angular/build:unit-test"
       }
     }
   }
+}
 }
